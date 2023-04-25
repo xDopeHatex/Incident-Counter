@@ -10,7 +10,11 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === DECREMENT) {
-    return { count: state.count - 1 };
+    if (state.count === 0) {
+      return state;
+    } else {
+      return { count: state.count - 1 };
+    }
   }
 
   if (action.type === SET) {
